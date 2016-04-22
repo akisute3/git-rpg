@@ -129,6 +129,8 @@ GEM
     ref (2.0.0)
     responders (2.1.2)
       railties (>= 4.2.0, < 5.1)
+    ridgepole (0.6.4)
+      activerecord (~> 4.2.1)
     rspec-core (3.4.4)
       rspec-support (~> 3.4.0)
     rspec-expectations (3.4.0)
@@ -212,6 +214,7 @@ DEPENDENCIES
   rails (= 4.2.6)
   rails-footnotes (~> 4.0)
   rb-readline
+  ridgepole
   rspec-rails (~> 3.0)
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
