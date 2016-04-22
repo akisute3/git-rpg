@@ -27,3 +27,5 @@ end
 
 gem 'slim-rails'
 gem 'honoka-rails'
+
+gem 'devise'
