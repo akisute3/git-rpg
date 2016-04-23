@@ -1,0 +1,13 @@
+h1 ユーザリスト
+
+table
+  thead
+    tr
+      th
+      th
+      th
+
+  tbody
+    - @users.each do |user|
+      ul
+        li = link_to user.username, user

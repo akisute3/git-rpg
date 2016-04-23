@@ -1,0 +1,11 @@
+h1 = @user.username
+
+dl.dl-horizontal
+  dt ユーザ名
+  dd = @user.username
+  dt メールアドレス
+  dd = @user.email
+  dt ログイン回数
+  dd = @user.sign_in_count
+  dt 最終ログイン日時
+  dd = @user.last_sign_in_at.to_s(:db)
