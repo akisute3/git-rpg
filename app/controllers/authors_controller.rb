@@ -1,4 +1,6 @@
+# coding: utf-8
 class AuthorsController < ApplicationController
+  before_action :authenticate_current_user
   before_action :set_author, only: [:destroy]
 
   def new
@@ -32,5 +34,10 @@ class AuthorsController < ApplicationController
 
     def author_params
       params.require(:author).permit(:name, :email)
+    end
+
+    def authenticate_current_user
+      @user = User.find(params[:user_id])
+      redirect_to(current_user, flash: {warning: "他人の author は変更できません"}) unless current_user == @user
     end
 end
