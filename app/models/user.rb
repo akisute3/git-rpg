@@ -21,4 +21,7 @@ class User < ActiveRecord::Base
     end
   end
 
+
+  has_many :authors, dependent: :destroy
+
 end
