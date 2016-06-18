@@ -28,14 +28,54 @@ add_index :users, :email,                unique: true
 add_index :users, :reset_password_token, unique: true
 
 
+create_table :authors do |t|
+  t.integer :user_id
+  t.string  :name
+  t.string  :email
+  t.timestamps null: false
+end
+
+
 create_table :mst_git_services do |t|
   t.string :name
 end
 
 
-create_table :authors do |t|
-  t.integer :user_id
+create_table :mst_commit_operations do |t|
   t.string :name
-  t.string :email
+end
+
+
+create_table :repositories do |t|
+  t.integer :git_service_id
+  t.string  :name
+  t.string  :url
+  t.string  :homepage
+  t.integer :project_id
+  t.timestamps null: false
+end
+
+
+create_table :pushes do |t|
+  t.integer :repository_id
+  t.timestamps null: false
+end
+
+
+create_table :commits do |t|
+  t.integer  :author_id
+  t.integer  :push_id
+  t.string   :commit_id
+  t.text     :message
+  t.datetime :timestamp
+  t.string   :url
+  t.timestamps null: false
+end
+
+
+create_table :commits_files do |t|
+  t.integer :commit_id
+  t.integer :file_id
+  t.integer :commit_operation_id
   t.timestamps null: false
 end
