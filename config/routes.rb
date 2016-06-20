@@ -5,4 +5,6 @@ Rails.application.routes.draw do
   resources :users, only: [:index, :show], shallow: true do
     resources :authors
   end
+
+  post 'gitlab/push', to: 'gitlab#push'
 end
