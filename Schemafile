@@ -28,6 +28,21 @@ add_index :users, :email,                unique: true
 add_index :users, :reset_password_token, unique: true
 
 
+create_table :user_statistics do |t|
+  t.integer :user_id
+  t.integer :level, default: 1
+  t.integer :exp, default: 0
+  t.timestamps null: false
+end
+
+
+create_table :mst_level_up_exps do |t|
+  t.integer :level
+  t.integer :exp
+  t.timestamps null: false
+end
+
+
 create_table :authors do |t|
   t.integer :user_id
   t.string  :name

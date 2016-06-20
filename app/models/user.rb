@@ -22,6 +22,7 @@ class User < ActiveRecord::Base
   end
 
 
+  has_one :user_statistic
   has_many :authors, dependent: :destroy
 
 end
