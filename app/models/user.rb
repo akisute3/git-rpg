@@ -23,6 +23,15 @@ class User < ActiveRecord::Base
 
 
   has_one :user_statistic
+  before_create :build_default_statistic
+
   has_many :authors, dependent: :destroy
+
+
+  private
+    def build_default_statistic
+      build_user_statistic
+      true
+    end
 
 end
