@@ -6,6 +6,14 @@ class GitlabController < ApplicationController
   def push
     json = JSON.parse(request.body.read, {:symbolize_names => true})
 
+    # プッシュしたユーザの確定
+    name, email = json[:user_name], json[:user_email]
+    pushing_user = User.find_by(username: name, email: email) || Author.find_by(name: name, email: email)&.user
+    unless pushing_user
+      render text: 'User not found.'
+      return
+    end
+
     # リポジトリレコードがなければ作成
     repo = Repository.find_or_create_by(project_id: json[:project_id]) do |r|
       r.mst_git_service = MstGitService.find_by(name: "GitLab")
@@ -19,7 +27,7 @@ class GitlabController < ApplicationController
     # commit レコード作成
     json[:commits].each do |c|
       author = Author.find_by(name: c[:author][:name], email: c[:author][:email])
-      next unless author
+      next if author.user != pushing_user
 
       commit = Commit.create(
         author_id: author.id,
@@ -36,6 +44,8 @@ class GitlabController < ApplicationController
         file_instances(c[:removed], "REMOVED", commit.id)
       commit.commit_files << instances
     end
+
+    UserStatistic.add_exp(pushing_user, push)
 
     render text: 'OK'
   rescue
