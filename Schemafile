@@ -47,9 +47,8 @@ end
 
 
 create_table :repositories do |t|
-  t.integer :git_service_id
+  t.integer :mst_git_service_id
   t.string  :name
-  t.string  :url
   t.string  :homepage
   t.integer :project_id
   t.timestamps null: false
@@ -65,7 +64,7 @@ end
 create_table :commits do |t|
   t.integer  :author_id
   t.integer  :push_id
-  t.string   :commit_id
+  t.string   :commit_hash
   t.text     :message
   t.datetime :timestamp
   t.string   :url
@@ -73,9 +72,9 @@ create_table :commits do |t|
 end
 
 
-create_table :commits_files do |t|
+create_table :commit_files do |t|
   t.integer :commit_id
-  t.integer :file_id
-  t.integer :commit_operation_id
+  t.string  :path
+  t.integer :mst_commit_operation_id
   t.timestamps null: false
 end
