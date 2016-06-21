@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
-  devise_for :users
   root to: 'welcome#index'
+
+  devise_for :users, controllers: {registrations: 'users/registrations'}
 
   resources :users, only: [:index, :show], shallow: true do
     resources :authors
