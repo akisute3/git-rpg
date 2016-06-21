@@ -21,6 +21,10 @@
         <%= f.label :password_confirmation %>
         <%= f.password_field :password_confirmation, class: "form-control" %>
       </div>
+      <div class="form-group">
+          <%= f.label :admin %><br />
+          <%= f.check_box :admin, class: "form-control-for-admin-checkbox"  %>
+      </div>
       <%= f.submit t('.sign_up', :default => "Sign up"), class: "btn btn-primary" %>
     <% end %>
   </div>
