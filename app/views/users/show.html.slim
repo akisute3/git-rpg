@@ -12,7 +12,7 @@ h2 基本情報
 
 dl.dl-horizontal
   dt ユーザ名
-  dd = @user.username
+  dd = @user.admin ? "#{@user.username} (管理者)" : @user.username
   dt メールアドレス
   dd = @user.email
   dt ログイン回数
