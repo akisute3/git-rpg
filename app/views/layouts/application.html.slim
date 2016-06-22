@@ -25,7 +25,7 @@ html lang="ja"
           span.icon-bar
           span.icon-bar
           span.icon-bar
-        = link_to "GitRPG", current_user ? user_path : root_path, class: 'navbar-brand'
+        = link_to "GitRPG", current_user ? user_path(current_user.id) : root_path, class: 'navbar-brand'
         .navbar-collapse.collapse.navbar-responsive-collapse
           ul.nav.navbar-nav
           ul.nav.navbar-nav.navbar-right
