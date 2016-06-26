@@ -10,8 +10,12 @@
         <%= f.text_field :username, autofocus: true, class: "form-control" %>
       </div>
       <div class="form-group">
+        <%= f.label :twitter_id, "Twitter ID" %>
+        <%= f.text_field :twitter_id, class: "form-control" %>
+      </div>
+      <div class="form-group">
         <%= f.label :email %>
-        <%= f.email_field :email, autofocus: true, class: "form-control" %>
+        <%= f.email_field :email, class: "form-control" %>
       </div>
       <div class="form-group">
         <%= f.label :password %><br />
