@@ -45,7 +45,12 @@ class GitlabController < ApplicationController
       commit.commit_files << instances
     end
 
-    UserStatistic.add_exp(pushing_user, push)
+    # 経験値追加
+    pre_level = pushing_user.user_statistic.level
+    statistic = UserStatistic.add_exp(pushing_user, push)
+
+    # レベルアップを知らせるツイート
+    Gitlabot.tweet(statistic) if statistic.level > pre_level
 
     render text: 'OK'
   rescue
