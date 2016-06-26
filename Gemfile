@@ -34,3 +34,5 @@ gem 'devise-bootstrap-views'
 gem 'devise-i18n'
 gem 'devise-i18n-views'
 gem 'seed-fu', '~> 2.3'
+
+gem "twitter"
