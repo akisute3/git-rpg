@@ -4,7 +4,8 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable,
          :validatable, :authentication_keys => [:login]
 
-  validates_format_of :username, with: /^[a-zA-Z0-9_\.]*$/, :multiline => true
+  validates :username, presence: true, format: { with: /\A[a-zA-Z0-9_\.]*\Z/ }
+  validates :twitter_id, presence: true
 
   attr_accessor :login
 
