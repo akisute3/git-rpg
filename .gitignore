@@ -13,3 +13,6 @@
 !/log/.keep
 /tmp/*
 !/tmp/.keep
+
+# Ignore certificate
+/containers/nginx/certs

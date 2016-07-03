@@ -1,0 +1,40 @@
+version: '2'
+
+services:
+  mysql:
+    image: mysql:latest
+    environment:
+      - MYSQL_ROOT_PASSWORD
+      - MYSQL_DATABASE=git-rpg
+      - MYSQL_USER=app
+      - MYSQL_PASSWORD
+    ports:
+      - '53306:3306'
+    volumes_from:
+      - datastore
+
+  datastore:
+    build: containers/datastore
+
+  rails:
+    build: .
+    ports:
+      - '53000:3000'
+    environment:
+      - RAILS_ENV=production
+      - MYSQL_PASSWORD
+      - DATABASE_URL=mysql2://mysql:3306
+      - SECRET_KEY_BASE
+    volumes_from:
+      - datastore
+    links:
+      - mysql
+
+  nginx:
+    build: containers/nginx
+    ports:
+      - '50443:443'
+    volumes_from:
+      - datastore
+    links:
+      - rails

@@ -1,0 +1,5 @@
+default_user:
+  username: admin
+  password: password
+  email: admin@mail.com
+  twitter_id: admin

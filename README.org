@@ -1,0 +1,11 @@
+* 使い方
+  1. 環境変数を設定
+     - MYSQL_ROOT_PASSWORD
+     - MYSQL_PASSWORD
+     - SECRET_KEY_BASE
+     - TWITTER_CONSUMER_KEY
+     - TWITTER_CONSUMER_SECRET
+     - TWITTER_ACCESS_TOKEN
+     - TWITTER_ACCESS_TOKEN_SECRET
+  2. $ docker-compose build && docker-compose run rails rake assets:precompile && docker-compose run rails rake ridgepole:apply && docker-compose up
+  3. admin/password でログインする (起動後すぐにログインしてパスワードを変更すること)

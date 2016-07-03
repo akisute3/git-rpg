@@ -1,3 +1,4 @@
+# coding: utf-8
 class User < ActiveRecord::Base
 
   devise :database_authenticatable, :registerable,
@@ -28,6 +29,16 @@ class User < ActiveRecord::Base
 
   has_many :authors, dependent: :destroy
 
+
+  # 初期ユーザ作成
+  def self.create_default_user
+    user = APP_CONFIG[:default_user]
+    User.create(username: user[:username],
+                password: user[:password],
+                email: user[:email],
+                twitter_id: user[:twitter_id],
+                admin: true)
+  end
 
   private
     def build_default_statistic

@@ -17,5 +17,6 @@ test:
 production:
   <<: *default
   database: git-rpg
-  username: app
-  password: <%= ENV['APP_DATABASE_PASSWORD'] %>
+  url: <%= ENV['DATABASE_URL'] %>
+  username: root
+  password: <%= ENV['MYSQL_PASSWORD'] %>
